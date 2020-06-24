@@ -2,14 +2,20 @@ import urllib.request
 from bs4 import BeautifulSoup
 import requests
 
-url = 'https://ielts.neea.edu.cn/'
-headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
+url = 'https://www.chinaielts.org/whats_new/ielts_news.shtml'
+hrefurl = 'https://www.chinaielts.org'
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3;Win64;x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
 
 res = requests.get(url, headers=headers)
 content = res.text
+
 soup = BeautifulSoup(content, 'html.parser')
+divs = soup.find_all(class_ = 'title')
 
-print(soup)
+for div in divs:
 
-# divs = soup.find_all(class_ = 'margin-top: -.2em;')
-# print(divs)
+    href = hrefurl + div.a['href']
+    title = div.a.text
+    
+    print(href)
+    print(title)
