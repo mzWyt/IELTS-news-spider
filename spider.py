@@ -9,6 +9,7 @@ res = requests.get(url, headers=headers)
 content = res.text
 soup = BeautifulSoup(content, 'html.parser')
 
-divs = soup.find_all(class_ = 'margin-top: -.2em;')
+print(soup)
 
-print(divs)
+# divs = soup.find_all(class_ = 'margin-top: -.2em;')
+# print(divs)
