@@ -14,8 +14,12 @@ divs = soup.find_all(class_ = 'title')
 
 for div in divs:
 
+    title = div.a.text.split("发布时间：")[0]
+    time = div.a.text.split("发布时间：")[1]
     href = hrefurl + div.a['href']
-    title = div.a.text
-    
-    print(href)
+
+    print(time)    
     print(title)
+    print(href)
+    
+    print("-----------------------------------")
